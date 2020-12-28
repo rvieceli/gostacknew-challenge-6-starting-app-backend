@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - database-data:/var/lib/postgres/data/
+      - ./create_test_db.sh:/docker-entrypoint-initdb.d/create_test_db.sh
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: gostack_desafio06
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+
+volumes:
+  database-data: {}
